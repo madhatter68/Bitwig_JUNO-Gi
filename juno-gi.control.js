@@ -1,5 +1,5 @@
 /*
-Bitwig 1.x.x controller script for Roland JUNO-Gi
+Bitwig controller script for Roland JUNO-Gi
 */
 
 loadAPI(1);
@@ -110,6 +110,26 @@ function onMidiPort1(status, data1, data2) {
                 case JUNOGi.SLIDER_M:
                     masterTrack.getVolume().set(data2, 128);
                     host.showPopupNotification("Master Volume: " + data2);
+                break;
+
+                case JUNOGi.SW_0:
+                    cursorTrack.getSolo.toggle();
+                break;
+
+                case JUNOGi.SW_1:
+                    tracks.getTrack(0).getArm.toggle();
+                break;
+
+                case JUNOGi.SW_2:
+                    tracks.getTrack(1).getArm.toggle();
+                break;
+
+                case JUNOGi.SW_3:
+                    tracks.getTrack(2).getArm.toggle();
+                break;
+
+                case JUNOGi.SW_4:
+                    tracks.getTrack(3).getArm.toggle();
                 break;
             }
         }
